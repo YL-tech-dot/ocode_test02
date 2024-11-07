@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% comment %} 답변 수정 페이지 {% endcomment %}
+<!-- 답변 수정 페이지 -->
 <div class="container my-3">
 
-    {% comment %} 폼 제출을 위한 POST 요청 처리와 파일 업로드를 위한 enctype 설정 {% endcomment %}
+    <!-- 폼 제출을 위한 POST 요청 처리와 파일 업로드를 위한 enctype 설정 -->
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
-        {% comment %} 폼 에러 메시지 표시 {% endcomment %}
+        <!-- 폼 에러 메시지 표시 -->
         {% include "form_errors.html" %}
 
-        {% comment %} 폼 필드 전체 출력 (필요시 개별 필드를 출력해도 됩니다) {% endcomment %}
+        <!-- 폼 필드 전체 출력 (필요시 개별 필드를 출력해도 됩니다) -->
         {{ form.as_p }}
 
-        {% comment %} 답변 내용 입력 필드 {% endcomment %}
+        <!-- 답변 내용 입력 필드 -->
         <div class="mb-3">
             <label for="content" class="form-label">답변내용</label>
             <textarea class="form-control" name="content" id="content" rows="10">
@@ -22,7 +22,7 @@
             </textarea>
         </div>
 
-        {% comment %} 저장하기 버튼 {% endcomment %}
+        <!-- 저장하기 버튼 -->
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
 </div>

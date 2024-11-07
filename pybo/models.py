@@ -115,3 +115,20 @@ class Comment(models.Model):
     # 객체를 문자열로 표현할 때 댓글 내용의 앞 20자를 반환
     def __str__(self):
         return self.content[:20]
+
+
+class Banner(models.Model):
+    img = models.ImageField(upload_to='pybo/banner_img', null=True, blank=True, verbose_name='배너이미지')
+    def save(self, *args, **kwargs):
+        # Question 객체가 이미 존재할 경우 (pk가 있는 경우)
+        if self.pk:
+            old_img = Banner.objects.get(pk=self.pk)
+            # 기존 이미지1을 새 이미지로 대체할 경우, 이전 파일 삭제
+            if old_img.img != self.img:
+                if os.path.isfile(old_img.img.path):
+                    os.remove(old_img.img.path)
+             # 장고의 기본 save 메서드 호출
+        super(Banner, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.img

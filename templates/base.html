@@ -1,36 +1,57 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
 <title>BestVoter</title>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    {% comment %} Bootstrap CSS {% endcomment %}
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
-    {% comment %} pybo CSS {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <!-- pybo CSS -->
     <!--    //* <link rel="stylesheet" href="{% static 'style.css' %}"> *//-->
-    <style>@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nabla&display=swap');</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&family=Noto+Sans+KR:wght@100..900&display=swap"
+          rel="stylesheet">
     <link rel="icon" href="{% static 'icon/github_mark.png' %}">
 
-
-    <style>
-    </style>
 </head>
+
 <body>
-    {% include 'navbar.html' %}
-    {% comment %} 기본 템플릿 안에 삽입될 내용 Start {% endcomment %}
-    {% block content %} 
+{% include 'navbar.html' %}
+{% include 'category_menu.html' %}
+{% block banner %}
+{% endblock %}
+<main>
+<div class="custom-block-content">
+    {% block content %}
     {% endblock %}
+</div>
+</main>
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center-center active">
+    <i class="bi bi-arrow-up-short"><!-- beofre --></i>
+</a>
+<!--  jQuery JS  -->
+<!-- 스크립트 src="{% static 'jquery-3.4.1.min.js' %}"-->
+<!-- Bootstrap JS -->
 
-    {% comment %} 기본 템플릿 안에 삽입될 내용 End {% endcomment %}
 
-    {% comment %} jQuery JS {% endcomment %}
-    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
-    <!-- Bootstrap JS -->
-    <script src="{% static 'bootstrap.min.js' %}"></script>
-    {% comment %} 자바스크립트 Start {% endcomment %}
-    {% block script %}
-    {% endblock %}
-    {% comment %} 자바스크립트 End {% endcomment %}
+{% block script %}
+<script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+<script>
+</script>
+{% endblock %}
+
+
+<!-- 바닥 커피만 쓰는 용도  -->
+<footer class="mt-5 text-center">
+    <p class="mb-3 p-copyright">Copyright &copy; 2024 0!Code. All rights reserved.</p>
+</footer>
+
 </body>
+
 </html>

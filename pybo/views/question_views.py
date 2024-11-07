@@ -7,8 +7,8 @@ from django.urls import reverse
 
 from pybo.ai_system.ai_pybo import start_ai
 # from pybo.ai_system.ai_pybo import start_ai
-from ..forms import QuestionForm
-from ..models import Question, Answer
+from ..forms import QuestionForm, BannerForm
+from ..models import Question, Answer, Banner
 
 ########################################################################################################
 
@@ -130,5 +130,39 @@ def question_vote(request, question_id):
     # 질문 상세 페이지로 리다이렉트
     return redirect('pybo:detail', question_id=question.id)
 
-########################################################################################################
+@login_required(login_url='common:login')
+def banner_view(request, ):
+    if request.method == 'GET':
+        form = BannerForm(request.POST, request.FILES)
+        if form.is_valid():
+            banner = form.save(commit=False)
+            banner.img =  request.FILES['img']
+            banner.save() # 최종적으로 질문을 데이터베이스에 저장
+            # 성공 시 JsonResponse로 리다이렉트 URL 반환
+            return JsonResponse({'redirect_url': reverse('pybo:index')})
+        else:
+            # 폼이 유효하지 않은 경우, 에러 메시지 반환
+            return JsonResponse({'error': form.errors}, status=400)
+    else:
+        # GET 요청일 경우 빈 폼 생성
+        form = BannerForm()
+    # 템플릿에 폼을 전달하여 렌더링
+    context = {'form': form}
+    return render(request, 'pybo/admin?_form.html', context)
 
+########################################################################################################
+# #
+# import os
+# import random
+# from django.conf import settings
+#
+#
+# def random_banner(request):
+#     # 이미지 폴더 경로
+#     image_folder = os.path.join(settings.STATIC_ROOT, 'banner')
+#     images = os.listdir(image_folder)
+#
+#     # 랜덤 이미지 선택
+#     selected_image = random.choice(images)
+#
+#     return render(request, 'index', {'banner_image': f'icon/{selected_image}'})

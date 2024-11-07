@@ -1,5 +1,12 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block banner %}
+<header>
+    <div class="banner-container">
+        <img class="banner-img" style="display: block; margin: 0 auto;" src="{% static 'banner/banner_img04.jpg' %}" alt="배너 이미지">
+    </div>
+</header>
+{% endblock %}
 {% block content %}
 {% comment %} 회원가입 페이지 컨테이너 시작 {% endcomment %}
 <div class="container my-3">
@@ -11,7 +18,7 @@
         <div class="col-8 text-right">
             {% comment %} 계정이 이미 있는 경우 로그인 페이지로 이동하는 링크 {% endcomment %}
             <span>
-                계정이 이미 있으신가요? <a href="{% url 'common:login' %}">로그인해</a>
+                계정이 이미 있으신가요? <a href="{% url 'common:login' %}">로그인</a>
             </span>
         </div>
     </div>

@@ -1,0 +1,20 @@
+{% load static %}
+<nav class="category-menu">
+    <ul>
+        <li class="px-1rem">
+            <strong style="font-weight: 800;">News</strong>
+            <ul class="sub-menu" style="opacity: 1; height: auto; width:12rem;">
+                <li class="text-left" ><a href="https://www.usa.gov/" style="font-weight: 500;">Hello America!</a></li>
+                <li class="text-left" ><a href="https://www.gov.kr/" style="font-weight: 500;">Hello Korea!</a></li>
+            </ul>
+        </li>
+        <li class="px-1rem">
+            <strong style="font-weight: 800;">Community</strong>
+            <ul class="sub-menu"  style="opacity: 1; height: auto; width:12rem;">
+                <li class="text-left"><a href="{% url 'pybo:index' %}" style="font-weight: 500; ">우리 얼마나 닮았나요?</a></li>
+                <li class="text-left"><a href="{% url 'pybo:index' %}" style="font-weight: 500; ">이 유명인은 누구인가요?</a></li>
+            </ul>
+        </li>
+        <!-- 추가 카테고리 항목들 -->
+    </ul>
+</nav>

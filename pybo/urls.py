@@ -70,4 +70,5 @@ urlpatterns = [
     
     # 질문에 대한 댓글 삭제. comment_id를 받아 해당 댓글을 삭제하는 comment_view.comment_delete_question 함수 호출.
     path('comment/delete/question/<int:comment_id>/', comment_view.comment_delete_question, name='comment_delete_question'),
+
 ]

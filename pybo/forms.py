@@ -65,3 +65,10 @@ class CommentForm(forms.ModelForm):
         return comment
 
 ########################################################################################################
+class BannerForm(forms.ModelForm):
+    class Meta:
+        fields = ['img']
+
+        labels = {
+            'img':'배너이미지',
+        }
